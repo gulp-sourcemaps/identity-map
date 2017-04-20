@@ -17,14 +17,16 @@ var from = miss.from;
 var concat = miss.concat;
 
 var jsContent = fs.readFileSync(path.join(__dirname, 'fixtures/helloworld.js'));
+var jsHashBangContent = fs.readFileSync(path.join(__dirname, 'fixtures/helloworld.bin.js'));
 var cssContent = fs.readFileSync(path.join(__dirname, 'fixtures/helloworld.css'));
 
-function makeFile() {
+function makeFile(contents) {
+  contents = contents || jsContent;
   var file = new File({
     cwd: __dirname,
     base: __dirname + '/assets',
     path: __dirname + '/assets/helloworld.js',
-    contents: jsContent,
+    contents: contents,
   });
 
   file.sourceMap = {
@@ -131,6 +133,28 @@ describe('identityMap', function() {
       expect(sourcemap.sourcesContent[0]).toEqual(jsContent);
       expect(sourcemap.names).toEqual(['helloWorld', 'console','log']);
       expect(sourcemap.mappings).toEqual('AAAA,YAAY;;AAEZ,SAASA,UAAU,CAAC,EAAE;CACrBC,OAAO,CAACC,GAAG,CAAC,cAAc,CAAC;AAC5B');
+    }
+
+    pipe([
+      from.obj([file]),
+      identityMap(),
+      concat(assert),
+    ], done);
+  });
+
+  it('adds a valid sourcemap for JS with hashBang', function(done) {
+    var file = makeFile(jsHashBangContent);
+
+    function assert(files) {
+      expect(files.length).toEqual(1);
+
+      var sourcemap = files[0].sourceMap;
+      expect(sourcemap).toExist();
+      expect(sourcemap.version).toEqual('3');
+      expect(sourcemap.sources[0]).toEqual('helloworld.js');
+      expect(sourcemap.sourcesContent[0]).toEqual(jsHashBangContent);
+      expect(sourcemap.names).toEqual(['helloWorld', 'console','log']);
+      expect(sourcemap.mappings).toEqual(';AACA,YAAY;;AAEZ,SAASA,UAAU,CAAC,EAAE;EACpBC,OAAO,CAACC,GAAG,CAAC,cAAc,CAAC;AAC7B');
     }
 
     pipe([
