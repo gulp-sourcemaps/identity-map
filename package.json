@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "acorn": "^6.1.1",
-    "css": "^2.2.1",
     "normalize-path": "^2.1.1",
+    "postcss": "^7.0.16",
     "source-map": "^0.6.0",
     "through2": "^2.0.3"
   },

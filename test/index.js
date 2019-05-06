@@ -202,7 +202,7 @@ describe('identityMap', function() {
       expect(sourcemap.sources[0]).toBe('helloworld.css');
       expect(sourcemap.sourcesContent[0]).toEqual(cssContent);
       expect(sourcemap.names).toEqual([]);
-      expect(sourcemap.mappings).toBe('CAAC;EACC;EACA');
+      expect(sourcemap.mappings).toBe('AAAA;CACC,gBAAgB;CAChB,WAAW;AACZ');
     }
 
     pipe([
