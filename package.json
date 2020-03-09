@@ -1,6 +1,6 @@
 {
   "name": "@gulp-sourcemaps/identity-map",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gulp plugin for generating an identity sourcemap for a file.",
   "author": "Gulp-sourcemaps Team",
   "contributors": [
