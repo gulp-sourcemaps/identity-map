@@ -31,6 +31,8 @@
     "through2": "^3.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20",
+    "@commitlint/config-conventional": "^20",
     "coveralls": "^3.0.3",
     "eslint": "9",
     "expect": "^1.19.0",

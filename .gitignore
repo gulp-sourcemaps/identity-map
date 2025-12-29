@@ -34,3 +34,5 @@ node_modules
 test/fixtures/tmp
 test/fixtures/out
 .nyc_output
+
+# package-lock.json # OIDC
