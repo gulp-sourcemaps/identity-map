@@ -25,5 +25,4 @@ jobs:
         run: | # npm 11.15.1 for OIDC support
           npm install -g npm@11
           npm ci
-          npm install
           npm publish
