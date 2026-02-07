@@ -9,9 +9,9 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    cooldown: 
+    cooldown:
       default-days: 7
-     groups:
+    groups:
       all-dependencies:
         patterns:
           - "*"      
